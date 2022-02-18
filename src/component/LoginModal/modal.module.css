@@ -1,0 +1,128 @@
+.root {
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+}
+
+.content {
+  background-color: #000;
+  height: 80vh;
+  width: 45vw;
+  border-radius: 2rem;
+  padding: 2rem 3.5rem;
+  position: relative;
+}
+
+.cancel_box {
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+  height: 4rem;
+  width: 4rem;
+  /* background-color: red; */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cancel_box:hover {
+  background-color: rgb(54, 51, 51);
+}
+.cancel {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  fill: #fff;
+  height: 3rem;
+  width: 3rem;
+  text-align: center;
+}
+
+.title {
+  color: #fff;
+  font-size: 2.3rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.formGroup {
+  width: 100%;
+  position: relative;
+  margin-bottom: 5rem;
+}
+
+.inputLabel {
+  color: red;
+  position: absolute;
+  left: 1rem;
+  color: #fff;
+  font-size: 1.5rem;
+  transform: translateY(17px);
+  transition: all 0.3s;
+}
+
+.formInput {
+  width: 100%;
+  background-color: transparent;
+  border: 0.5px solid #2f3336;
+  padding: 0.4rem 0.5rem 0rem 1rem;
+  border-radius: 0.5rem;
+  height: 6rem;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.formInput:focus {
+  outline: 1px solid #3498eb;
+}
+
+.formInput:focus ~ .inputLabel {
+  transform: translateY(0px);
+  color: #3498eb;
+}
+
+.formInput:not(:placeholder-shown) ~ .inputLabel {
+  transform: translateY(0px);
+  color: #3498eb;
+}
+
+.formInput::placeholder {
+  color: transparent;
+}
+
+.button {
+  width: 100%;
+  padding: 1.4rem;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  font-weight: 600;
+  background-color: #77797a;
+}
+
+@media screen and (max-width: 725px) {
+  .content {
+    width: 60vw;
+  }
+}
+@media screen and (max-width: 523px) {
+  .content {
+    width: 80vw;
+  }
+}

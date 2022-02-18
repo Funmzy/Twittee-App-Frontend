@@ -1,0 +1,18 @@
+.root {
+  background-color: #000;
+  min-height: 100vh;
+  display: flex;
+}
+
+.sidebar {
+  width: 25vw;
+}
+
+.main {
+  width: 42vw;
+  border-right: 1px solid #2f3336;
+  border-left: 1px solid #2f3336;
+}
+.search {
+  width: 33vw;
+}

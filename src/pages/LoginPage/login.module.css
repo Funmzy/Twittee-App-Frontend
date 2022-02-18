@@ -1,0 +1,263 @@
+.root {
+    position: relative;
+}
+
+.top {
+  min-height: 95vh;
+  display: flex;
+}
+.logo_bg {
+  width: 54vw;
+  background: url(../../../assets/images/twitter-bg.png);
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginform {
+  width: 46vw;
+
+  background-color: #000000;
+  padding: 3rem;
+  color: #fff;
+}
+.bottom {
+  background-color: #000000;
+  min-height: 5vh;
+  padding: 1rem 4rem;
+}
+
+.nav_list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style-type: none;
+  flex-wrap: wrap;
+}
+
+.nav_list li {
+  color: #ffffff;
+  opacity: 0.5;
+  font-size: 1.1rem;
+}
+
+.nav_list li:hover {
+  text-decoration: underline;
+}
+
+.nav_copy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style-type: none;
+  margin-top: 1.5rem;
+}
+
+.nav_copy li {
+  color: #ffffff;
+  opacity: 0.5;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.nav_copy li:hover {
+  text-decoration: underline;
+}
+
+.main_logo {
+  fill: #ffffff;
+  height: 40rem;
+  width: 40rem;
+}
+
+.logo {
+  fill: #ffffff;
+  height: 5rem;
+  width: 5rem;
+}
+
+.title {
+  font-size: 7rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+}
+.subTitle {
+  font-size: 3.5rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.action_container {
+  width: 54%;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn_social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  border-radius: 3rem;
+  border: none;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.btn_icon {
+  font-size: 1.6rem;
+  margin-right: 1rem;
+}
+
+.btn_text {
+  font-weight: 700;
+}
+
+.btn_google_text {
+  opacity: 0.6;
+  font-weight: 700;
+}
+
+.alternative {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.alternativeLine {
+  flex: 0.5;
+  height: 1px;
+  background-color: grey;
+  opacity: 0.5;
+}
+.alternativeOr {
+  margin: 0 0.5rem 0 0.5rem;
+  font-size: 1.3rem;
+}
+
+.btn_email {
+  background-color: #3498eb;
+  border: none;
+  padding: 1.3rem 0;
+  border-radius: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  margin: 1rem 0;
+}
+.policy {
+  color: #6e767d;
+  margin-bottom: 4rem;
+}
+
+.policy span {
+  color: #3498eb;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.policy span:hover {
+  text-decoration: underline;
+}
+
+.already {
+  font-size: 1.7rem;
+  margin-bottom: 1.4rem;
+}
+.signinBtn {
+  background-color: transparent;
+  border-radius: 3rem;
+  padding: 1.2rem;
+  border: 0.5px solid #c2daee;
+  cursor: pointer;
+  color: #3498eb;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 1240px) {
+  .logo_bg {
+    width: 40vw;
+  }
+
+  .loginform {
+    width: 60vw;
+  }
+}
+
+@media screen and (max-width: 949px) {
+  .top {
+    flex-direction: column;
+  }
+
+  .logo_bg {
+    width: 100vw;
+    order: 1;
+  }
+
+  .loginform {
+    width: 100vw;
+    padding: 2rem 15rem 5rem 15rem;
+  }
+}
+/* //action_container */
+
+@media screen and (max-width: 860px) {
+  .action_container {
+    width: 70%;
+  }
+  .title {
+    font-size: 5rem;
+  }
+
+  .nav_list {
+    justify-content: center;
+  }
+
+  .nav_list li {
+    margin-right: 1rem;
+  }
+}
+
+@media screen and (max-width: 696px) {
+  .action_container {
+    width: 100%;
+  }
+
+  .loginform {
+    width: 100vw;
+    padding: 2rem 10rem 5rem 10rem;
+  }
+
+  .main_logo {
+    width: 20rem;
+    height: 20rem;
+  }
+}
+
+@media screen and (max-width: 451px) {
+  .action_container {
+    width: 100%;
+  }
+
+  .loginform {
+    width: 100vw;
+    padding: 2rem 5rem 5rem 5rem;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .subTitle {
+    font-size: 2rem;
+  }
+
+  .main_logo {
+    width: 10rem;
+    height: 10rem;
+  }
+}

@@ -1,0 +1,92 @@
+.root {
+  padding-left: 4rem;
+  padding-top: 1rem;
+  position: fixed;
+}
+
+.searchBox {
+  position: relative;
+  /* width: 100%; */
+}
+
+.container {
+  width: 24vw;
+}
+.searchIcon {
+  color: #fff;
+  position: absolute;
+  left: 2rem;
+  top: 40%;
+  font-size: 1.5rem;
+  color: #656d74;
+}
+.searchInput {
+  width: 100%;
+  background-color: #202327;
+  border: none;
+  padding: 1rem 4rem;
+  font-size: 2rem;
+  color: #fff;
+  border-radius: 2rem;
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: #656d74;
+  font-size: 1.4rem;
+}
+
+.trends {
+  color: #fff;
+  margin-top: 3rem;
+  background-color: #202327;
+  border-radius: 2rem;
+  padding-bottom: 2rem;
+}
+.trendTitle {
+  padding: 2rem 0 1rem 2rem;
+}
+.trendBox {
+  display: flex;
+  padding-bottom: 2rem;
+  width: 100%;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+
+.trendBox:hover {
+  background-color: #333436;
+}
+
+.trendDomain {
+  font-size: 1.2rem;
+  color: #4f555b;
+  margin-right: 1rem;
+}
+.trending {
+  font-size: 1.3rem;
+  color: #4f555b;
+}
+.trendTag {
+  font-size: 2rem;
+  opacity: .8;
+}
+
+.trendNumber {
+  color: #4f555b;
+  font-size: 1.6rem;
+  margin-top: -1rem;
+}
+.trendImgBox {
+  width: 6rem;
+  height: 6rem;
+}
+
+.trendImg {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}

@@ -1,0 +1,65 @@
+.root {
+  /* background-color: red; */
+  padding: 1rem 2rem 2rem 2rem;
+  border-bottom: 1px solid #2f3336;
+}
+
+.twit {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.img_box {
+  width: 6rem;
+  height: 6rem;
+  background-color: #3498eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 4rem;
+}
+
+.img_text {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.inputBox {
+  width: 80%;
+}
+.inputInput {
+  width: 80%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #2f3336;
+  padding-bottom: 2.5rem;
+  padding-top: 1rem;
+  outline: none;
+  color: #fff;
+  font-size: 2rem;
+}
+
+.inputInput::placeholder {
+  font-size: 2rem;
+}
+
+.btn {
+  margin-left: auto;
+  margin-top: 3rem;
+  background-color: #3498eb;
+  border: none;
+  padding: 1rem 4rem;
+  color: #fff;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.btnBox {
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+}

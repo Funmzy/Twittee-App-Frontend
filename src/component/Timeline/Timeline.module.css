@@ -1,0 +1,30 @@
+.root {
+}
+
+.header {
+  padding: 1rem 2rem;
+  position: fixed;
+  background-color: #000;
+  opacity: 0.9;
+  width: 41.5vw;
+  border-bottom: 1px solid #2f3336;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-right: 1px solid #2f3336;
+}
+.content {
+  /* padding: 0 2rem; */
+}
+
+.title {
+  font-size: 2rem;
+}
+.titleIcon {
+  font-size: 2rem;
+}
+
+.content {
+  padding-top: 8rem;
+}

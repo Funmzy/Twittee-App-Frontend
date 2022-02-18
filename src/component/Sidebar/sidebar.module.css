@@ -1,0 +1,39 @@
+.root {
+  padding: 3rem 0 2rem 10rem;
+  position: fixed;
+}
+
+.logo {
+  fill: #fff;
+  height: 4rem;
+  width: 4rem;
+}
+
+.navList {
+  margin-top: 3rem;
+}
+.navLink {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  /* background-color: red; */
+  width: max-content;
+  padding: 1rem 3rem;
+  border-radius: 2.7rem;
+  margin-left: -2.5rem;
+  margin-bottom: 1rem;
+}
+
+.navLink:hover {
+  background-color: rgb(32, 35, 39);
+}
+
+.navIcon {
+  font-size: 2.5rem;
+  margin-right: 1.5rem;
+}
+.navText {
+  font-size: 2rem;
+  font-weight: 500;
+}
