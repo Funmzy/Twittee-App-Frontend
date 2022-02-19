@@ -1,0 +1,86 @@
+.root {
+  color: #fff;
+  border-bottom: 1px solid #2f3336;
+  cursor: pointer;
+}
+
+.root:hover {
+  background-color: #202327;
+}
+
+.subRoot {
+  padding: 2rem;
+  display: flex;
+}
+
+.imgContainer {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #3498eb;
+}
+.content {
+  margin-left: 3rem;
+  width: 80%;
+}
+
+.contentTop {
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  font-size: 1.7rem;
+  margin-right: 2rem;
+}
+.hrs {
+  opacity: 0.7;
+  font-size: 1.3rem;
+}
+.tweet {
+  font-size: 1.4rem;
+}
+.iconContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+}
+.twitAction {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+}
+.iconBox {
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.iconBox:hover {
+  background-color: #3498eb;
+}
+
+.twitIcon {
+  font-size: 1.5rem;
+}
+
+.pText {
+  font-size: 1.3rem;
+}
+
+.replyName {
+  font-size: 1.3rem;
+  color: #6e767d;
+}
+
+.replySpan {
+  color: #3498eb;
+}

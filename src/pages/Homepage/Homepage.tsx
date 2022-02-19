@@ -1,6 +1,6 @@
+import { Outlet } from "react-router-dom";
 import Search from "../../component/Search/Search";
 import Sidebar from "../../component/Sidebar/Sidebar";
-import Timeline from "../../component/Timeline/Timeline";
 import classes from "./homepage.module.css";
 
 const Homepage = () => {
@@ -10,10 +10,10 @@ const Homepage = () => {
         <Sidebar />
       </div>
       <div className={classes.main}>
-        <Timeline />
+        <Outlet />
       </div>
       <div className={classes.search}>
-          <Search />
+        <Search />
       </div>
     </div>
   );

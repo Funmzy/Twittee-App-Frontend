@@ -1,0 +1,89 @@
+.root {
+  color: #fff;
+}
+
+.header {
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.back {
+  margin-right: 3rem;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.back:hover {
+  background-color: #202327;
+}
+
+.backIcon {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+}
+.twitText {
+  font-size: 2rem;
+}
+
+.reply {
+  display: flex;
+  padding: 1rem;
+}
+.imgBox {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: #3498eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content {
+  width: 80%;
+  margin-left: 3rem;
+}
+.replyName {
+  font-size: 1.7rem;
+  color: #6e767d;
+  font-weight: 500;
+}
+.input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #6e767d;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+  color: #fff;
+  font-size: 1.7rem;
+}
+
+.input::placeholder {
+  font-size: 1.7rem;
+}
+
+.replySpan {
+  color: #3498eb;
+}
+
+.btnInput {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 3rem;
+}
+.btn {
+  border: none;
+  background-color: #3498eb;
+  color: #fff;
+  padding: 1rem 4rem;
+  border-radius: 2rem;
+  cursor: pointer;
+}
