@@ -3,11 +3,18 @@ import classes from "./Timeline.module.css";
 import { AiOutlineDeploymentUnit } from "react-icons/ai";
 import CreateTweet from "../CreateTweet/CreateTweet";
 import Tweet from "../Tweet/Tweet";
+import { useShowModal } from "../../pages/Homepage/Homepage";
 
 const Timeline = () => {
+  const { showModal } = useShowModal();
   return (
     <div className={classes.root}>
-      <div className={classes.header} style={{ color: "white" }}>
+      <div
+        className={classes.header}
+        style={{
+          backgroundColor: showModal ? "#242D34" : "#000000",
+        }}
+      >
         <h2 className={classes.title}>Home</h2>
         <AiOutlineDeploymentUnit className={classes.titleIcon} />
       </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./sidebar.module.css";
 import { RiHome7Fill } from "react-icons/ri";
@@ -52,7 +52,11 @@ const navLinks = [
   },
 ];
 
-const Sidebar = () => {
+interface Prop {
+  setShowModal: Dispatch<SetStateAction<boolean>>;
+}
+
+const Sidebar: React.FC<Prop> = ({ setShowModal }) => {
   return (
     <div className={classes.root}>
       <svg viewBox="0 0 24 24" aria-hidden="true" className={classes.logo}>
@@ -69,6 +73,9 @@ const Sidebar = () => {
             </NavLink>
           ))}
         </div>
+        <button onClick={() => setShowModal(true)} className={classes.tweet}>
+          Tweet
+        </button>
       </div>
     </div>
   );

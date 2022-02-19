@@ -1,0 +1,72 @@
+.root {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+.content {
+  background-color: #000;
+  height: 35vh;
+  width: 50vw;
+  margin-top: 10vh;
+  border-radius: 2rem;
+  color: #fff;
+  padding: 2rem 3rem;
+}
+
+.modalIcon {
+  font-size: 2rem;
+  cursor: pointer;
+  margin-bottom: 3rem;
+}
+
+.inputbox {
+  display: flex;
+}
+
+.imgBox {
+  background-color: #3498eb;
+  width: 7rem;
+  height: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 3rem;
+}
+.imgText {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.input {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 2rem;
+}
+
+.input::placeholder {
+  font-size: 2rem;
+}
+
+.inputBtn {
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.btn {
+  background-color: #3498eb;
+  border: none;
+  color: #fff;
+  padding: 1rem 4rem;
+  font-size: 2rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  margin-top: 2rem;
+}

@@ -2,14 +2,14 @@ import { Dispatch, SetStateAction } from "react";
 import classes from "../LoginModal/modal.module.css";
 
 type Props = {
-    setShowModal: Dispatch<SetStateAction<boolean>>
-}
+  setShowModal: Dispatch<SetStateAction<boolean>>;
+};
 
 const LoginModal: React.FC<Props> = ({ setShowModal }) => {
   return (
     <div className={classes.root}>
       <div className={classes.content}>
-        <div className={classes.cancel_box} onClick={() => setShowModal(false)} >
+        <div className={classes.cancel_box} onClick={() => setShowModal(false)}>
           <h4 className={classes.cancel}>X</h4>
         </div>
         <div className={classes.header}>
@@ -23,12 +23,28 @@ const LoginModal: React.FC<Props> = ({ setShowModal }) => {
 
         <form>
           <div className={classes.formGroup}>
-            <input className={classes.formInput} type="text" name="email" id="email" placeholder="." />
-            <label className={classes.inputLabel} htmlFor="email">Email</label>
+            <input
+              className={classes.formInput}
+              type="text"
+              name="email"
+              id="email"
+              placeholder="."
+            />
+            <label className={classes.inputLabel} htmlFor="email">
+              Email
+            </label>
           </div>
           <div className={classes.formGroup}>
-            <input className={classes.formInput} type="password" name="password" id="password" placeholder="." />
-            <label className={classes.inputLabel} htmlFor="password">Password</label>
+            <input
+              className={classes.formInput}
+              type="password"
+              name="password"
+              id="password"
+              placeholder="."
+            />
+            <label className={classes.inputLabel} htmlFor="password">
+              Password
+            </label>
           </div>
           <button className={classes.button}>Next</button>
         </form>
