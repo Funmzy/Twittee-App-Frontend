@@ -19,12 +19,12 @@ const LoginPage = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
 
-  const { signIn } = useContext(AuthContext);
+  const { signIn, isAuthing } = useContext(AuthContext);
 
   const state = location.state as CustomizedState;
 
   const login = () => {
-    signIn("user", () => {});
+    // signIn("user", () => {});log
     if (state && state.from) {
       const { from } = state;
       navigate(from, { replace: true });

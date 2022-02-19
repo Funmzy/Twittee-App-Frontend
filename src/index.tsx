@@ -4,6 +4,7 @@ import "./styles/app.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import AuthProvider from "./context/AuthContext";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -66,8 +66,8 @@ const Sidebar: React.FC<Prop> = ({ setShowModal }) => {
       </svg>
       <div>
         <div className={classes.navList}>
-          {navLinks.map((link) => (
-            <NavLink to={link.link} className={classes.navLink}>
+          {navLinks.map((link, idx) => (
+            <NavLink to={link.link} className={classes.navLink} key={`${idx}`}>
               {link.icon}
               <span className={classes.navText}>{link.text}</span>
             </NavLink>

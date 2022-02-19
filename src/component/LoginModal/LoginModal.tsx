@@ -1,11 +1,21 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import classes from "../LoginModal/modal.module.css";
+import { Oval } from "react-loader-spinner";
 
 type Props = {
   setShowModal: Dispatch<SetStateAction<boolean>>;
 };
 
 const LoginModal: React.FC<Props> = ({ setShowModal }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { signIn, isAuthing } = useContext(AuthContext);
+
+  const handleLogin = () => {
+    signIn({ email, password }, "login");
+  };
+
   return (
     <div className={classes.root}>
       <div className={classes.content}>
@@ -29,6 +39,8 @@ const LoginModal: React.FC<Props> = ({ setShowModal }) => {
               name="email"
               id="email"
               placeholder="."
+              value={email}
+              onChange={(e: any) => setEmail(e.target.value)}
             />
             <label className={classes.inputLabel} htmlFor="email">
               Email
@@ -41,12 +53,36 @@ const LoginModal: React.FC<Props> = ({ setShowModal }) => {
               name="password"
               id="password"
               placeholder="."
+              value={password}
+              onChange={(e: any) => setPassword(e.target.value)}
             />
             <label className={classes.inputLabel} htmlFor="password">
               Password
             </label>
           </div>
-          <button className={classes.button}>Next</button>
+          <button
+            style={{
+              backgroundColor: email && password ? "#3498eb" : "#77797a",
+            }}
+            className={classes.button}
+            onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+              e.preventDefault();
+              handleLogin();
+            }}
+          >
+            {isAuthing ? (
+              <Oval
+                ariaLabel="loading-indicator"
+                height={17}
+                width={17}
+                strokeWidth={5}
+                color="blue"
+                secondaryColor="#3498eb"
+              />
+            ) : (
+              "Login"
+            )}
+          </button>
         </form>
       </div>
     </div>

@@ -1,15 +1,24 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import classes from "../LoginModal/modal.module.css";
+import { Oval } from "react-loader-spinner";
 
 type Props = {
-    setShowModal: Dispatch<SetStateAction<boolean>>
-}
+  setShowModal: Dispatch<SetStateAction<boolean>>;
+};
 
 const SignupModal: React.FC<Props> = ({ setShowModal }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { signIn, isAuthing } = useContext(AuthContext);
+
+  const handleLogin = () => {
+    signIn({ email, password }, "signup");
+  };
   return (
     <div className={classes.root}>
       <div className={classes.content}>
-        <div className={classes.cancel_box} onClick={() => setShowModal(false)} >
+        <div className={classes.cancel_box} onClick={() => setShowModal(false)}>
           <h4 className={classes.cancel}>X</h4>
         </div>
         <div className={classes.header}>
@@ -23,14 +32,56 @@ const SignupModal: React.FC<Props> = ({ setShowModal }) => {
 
         <form>
           <div className={classes.formGroup}>
-            <input className={classes.formInput} type="text" name="email" id="email" placeholder="." />
-            <label className={classes.inputLabel} htmlFor="email">Email</label>
+            <input
+              className={classes.formInput}
+              type="text"
+              name="email"
+              id="email"
+              placeholder="."
+              value={email}
+              onChange={(e: any) => setEmail(e.target.value)}
+            />
+            <label className={classes.inputLabel} htmlFor="email">
+              Email
+            </label>
           </div>
           <div className={classes.formGroup}>
-            <input className={classes.formInput} type="password" name="password" id="password" placeholder="." />
-            <label className={classes.inputLabel} htmlFor="password">Password</label>
+            <input
+              className={classes.formInput}
+              type="password"
+              name="password"
+              id="password"
+              placeholder="."
+              value={password}
+              onChange={(e: any) => setPassword(e.target.value)}
+            />
+            <label className={classes.inputLabel} htmlFor="password">
+              Password
+            </label>
           </div>
-          <button className={classes.button}>Next</button>
+          <button
+            style={{
+              backgroundColor: email && password ? "#3498eb" : "#77797a",
+            }}
+            className={classes.button}
+            onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+              e.preventDefault();
+              handleLogin();
+            }}
+          >
+            {isAuthing ? (
+              <Oval
+                ariaLabel="loading-indicator"
+                height={17}
+                width={17}
+                strokeWidth={5}
+                color="blue"
+                secondaryColor="#3498eb"
+              />
+            ) : (
+              "Login"
+            )}
+          </button>
         </form>
       </div>
     </div>

@@ -13,7 +13,7 @@ const TweetDetail = () => {
         </div>
         <h2 className={classes.twitText}>Tweet</h2>
       </div>
-      <Tweet type="tweet" />
+      {/* <Tweet type="tweet" /> */}
 
       <div className={classes.reply}>
         <div className={classes.imgBox}>
@@ -35,8 +35,8 @@ const TweetDetail = () => {
           </div>
         </div>
       </div>
-      <Tweet type="reply" />
-      <Tweet type="reply" />
+      {/* <Tweet type="reply" />
+      <Tweet type="reply" /> */}
     </div>
   );
 };
