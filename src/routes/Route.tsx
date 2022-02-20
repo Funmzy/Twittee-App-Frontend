@@ -27,7 +27,7 @@ const AppRoutes = () => {
         <Route path="/profile" element={<MyTwits />} />
         <Route path="twit/:id" element={<TweetDetail />} />
       </Route>
-      <Route path="/login" element={<LoginPage />} />
+      <Route path="/auth" element={<LoginPage />} />
       <Route path="*" element={<Homepage />} />
     </Routes>
   );

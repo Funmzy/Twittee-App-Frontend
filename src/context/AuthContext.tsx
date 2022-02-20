@@ -52,7 +52,9 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setUser(null);
       setAuthError(e);
       setIsAuthing(false);
-      alert("an error ocurred");
+      const message =
+        type === "login" ? "invalid login credentials" : "User already exist";
+      alert(message);
     }
   };
 
