@@ -87,3 +87,14 @@
   border-radius: 2rem;
   cursor: pointer;
 }
+
+.twitIcon {
+  color: #fff;
+  font-size: 3rem;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.twitIcon:hover {
+  color: red
+}

@@ -1,10 +1,126 @@
 import classes from "./TweetDetail.module.css";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import Tweet from "../Tweet/Tweet";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
+import { Oval, TailSpin } from "react-loader-spinner";
+import { BASE_URL } from "../../constants/constants";
+import { TweetContext } from "../../context/TweetContext";
+import { AiOutlineDelete } from "react-icons/ai";
 
 const TweetDetail = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
+  const { user } = useContext(AuthContext);
+  const { allTweets, setAllTweets } = useContext(TweetContext);
+  const [isGetting, setIsGetting] = useState(false);
+  const [tweet, setTweet] = useState<any>(null);
+  const [isDeletingTwit, setIsDeletingTwit] = useState(false);
+
+  const [isReplying, setIsReplying] = useState(false);
+
+  const [text, setText] = useState("");
+
+  console.log(user.user.id, "USER");
+
+  const reply = async () => {
+    if (!text) return;
+    try {
+      setIsReplying(true);
+      const config = {
+        headers: { Authorization: `Bearer ${user?.token}` },
+      };
+
+      const { data } = await axios.post(
+        `${BASE_URL}/comment/${id}`,
+        { comment: text },
+        config
+      );
+      setText("");
+
+      let newTweet = JSON.stringify(tweet);
+      const parsedTweet = JSON.parse(newTweet);
+
+      // console.log(newTweet, "PARSED");
+
+      const userComment = {
+        id: user.user.id,
+        name: user.user.name,
+        email: user.user.email,
+        created_at: user.user.created_at,
+      };
+      data.comment[0].user = userComment;
+
+      parsedTweet.comments.unshift(data.comment[0]);
+
+      // console.log(userComment, "userComment");
+      // console.log(data.comment[0]);
+      // console.log(parsedTweet, "NEW");
+      // console.log(tweet, "OLD");
+
+      setTweet(parsedTweet);
+
+      const currTweet = allTweets?.find((twt) => `${twt.id}` === id);
+      const currTweetIdx = allTweets?.findIndex((twt) => `${twt.id}` === id);
+
+      if (currTweetIdx && allTweets && currTweet) {
+        const allNewTweet = [...allTweets];
+        currTweet.comment.push(userComment);
+
+        allNewTweet[currTweetIdx] = currTweet;
+        setAllTweets(allNewTweet);
+      }
+
+      setIsReplying(false);
+    } catch (e) {
+      // console.log(e);
+      setIsReplying(false);
+      alert("an error ocurred");
+    }
+  };
+
+  const deleteTwit = async () => {
+    const config = {
+      headers: { Authorization: `Bearer ${user?.token}` },
+    };
+    try {
+      setIsDeletingTwit(true);
+
+      const { data } = await axios.delete(`${BASE_URL}/twit/${id}`, config);
+
+      console.log(data);
+      setIsDeletingTwit(false);
+    } catch (e) {
+      setIsDeletingTwit(false);
+      console.log(e);
+      alert("an error ocurred, unable to delete");
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const config = {
+          headers: { Authorization: `Bearer ${user?.token}` },
+        };
+        setIsGetting(true);
+
+        const { data } = await axios.get(`${BASE_URL}/twit/${id}`, config);
+
+        setTweet(data.twits);
+        setText("");
+
+        setIsGetting(false);
+      } catch (e) {
+        setIsGetting(false);
+      }
+    };
+
+    fetchData();
+  }, [id, user?.token]);
+
   return (
     <div className={classes.root}>
       <div className={classes.header}>
@@ -12,31 +128,109 @@ const TweetDetail = () => {
           <IoIosArrowRoundBack className={classes.backIcon} />
         </div>
         <h2 className={classes.twitText}>Tweet</h2>
-      </div>
-      {/* <Tweet type="tweet" /> */}
-
-      <div className={classes.reply}>
-        <div className={classes.imgBox}>
-          <p>S K</p>
-        </div>
-        <div className={classes.content}>
-          <p className={classes.replyName}>
-            Replying <span className={classes.replySpan}>@olujay</span>
-          </p>
-          <input
-            className={classes.input}
-            type="text"
-            name="reply"
-            id="reply"
-            placeholder="Tweet your reply"
-          />
-          <div className={classes.btnInput}>
-            <button className={classes.btn}>Reply</button>
+        {isDeletingTwit ? (
+          <div className={classes.twitIcon}>
+            <TailSpin
+              ariaLabel="loading-indicator"
+              height={17}
+              width={17}
+              // strokeWidth={5}
+              color="white"
+              // secondaryColor="#3498eb"
+            />
           </div>
-        </div>
+        ) : (
+          tweet &&
+          tweet.twits.user.id === user.user.id && (
+            <AiOutlineDelete
+              onClick={deleteTwit}
+              className={classes.twitIcon}
+            />
+          )
+        )}
+        {/* {} */}
       </div>
-      {/* <Tweet type="reply" />
-      <Tweet type="reply" /> */}
+      {isGetting ? (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            minHeight: "40vh",
+          }}
+        >
+          <Oval
+            ariaLabel="loading-indicator"
+            height={17}
+            width={17}
+            strokeWidth={5}
+            color="blue"
+            secondaryColor="#3498eb"
+          />
+        </div>
+      ) : tweet ? (
+        <>
+          <Tweet
+            type="tweet"
+            comments={tweet.comments.length}
+            likes={tweet.likes}
+            createdAt={tweet.twits.created_at}
+            id={tweet.twits.id}
+            text={tweet.twits.twit}
+            username={tweet.twits.user.name}
+          />
+          <div className={classes.reply}>
+            <div className={classes.imgBox}>
+              <p>{user.user.name.charAt(0)}</p>
+            </div>
+            <div className={classes.content}>
+              <p className={classes.replyName}>
+                Replying{" "}
+                <span className={classes.replySpan}>
+                  @{tweet.twits.user.name}
+                </span>
+              </p>
+              <input
+                className={classes.input}
+                type="text"
+                name="reply"
+                id="reply"
+                placeholder="Tweet your reply"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+              />
+              <div className={classes.btnInput}>
+                <button onClick={reply} className={classes.btn}>
+                  {isReplying ? (
+                    <Oval
+                      ariaLabel="loading-indicator"
+                      height={17}
+                      width={17}
+                      strokeWidth={5}
+                      color="#fff"
+                      secondaryColor="#3498eb"
+                    />
+                  ) : (
+                    "Reply"
+                  )}
+                </button>
+              </div>
+            </div>
+          </div>
+          {tweet.comments.map((twt: any) => (
+            <Tweet
+              type="reply"
+              createdAt={twt.created_at}
+              id={twt.id}
+              text={twt.comment}
+              username={twt.user.name}
+              key={twt.id}
+            />
+          ))}
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

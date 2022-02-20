@@ -5,6 +5,7 @@ import RequireAuth from "../Auth/RequireAuth";
 import Homepage from "../pages/Homepage/Homepage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import TweetProvider from "../context/TweetContext";
+import MyTwits from "../component/MyTwits/MyTwits";
 
 // TweetDetail
 // Timeline
@@ -23,7 +24,8 @@ const AppRoutes = () => {
         }
       >
         <Route path="" element={<Timeline />} />
-        <Route path="twit" element={<TweetDetail />} />
+        <Route path="/profile" element={<MyTwits />} />
+        <Route path="twit/:id" element={<TweetDetail />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="*" element={<Homepage />} />

@@ -1,37 +1,36 @@
-import { useLocation, useNavigate } from "react-router-dom";
+// import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { useEffect, useState } from "react";
+// import { AuthContext } from "../../context/AuthContext";
 import classes from "./login.module.css";
 import { FcGoogle } from "react-icons/fc";
 import { BsApple } from "react-icons/bs";
 import SignupModal from "../../component/SignupModal/SignupModal";
 import LoginModal from "../../component/LoginModal/LoginModal";
+import { useNavigate } from "react-router-dom";
 
-interface CustomizedState {
-  from: string;
-}
+// interface CustomizedState {
+//   from: string;
+// }
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
   const auth = useAuth();
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
 
-  const { signIn, isAuthing } = useContext(AuthContext);
+  // const state = location.state as CustomizedState;
 
-  const state = location.state as CustomizedState;
-
-  const login = () => {
-    // signIn("user", () => {});log
-    if (state && state.from) {
-      const { from } = state;
-      navigate(from, { replace: true });
-    } else {
-      navigate("/");
-    }
-  };
+  // const login = () => {
+  //   // signIn("user", () => {});log
+  //   if (state && state.from) {
+  //     const { from } = state;
+  //     navigate(from, { replace: true });
+  //   } else {
+  //     navigate("/");
+  //   }
+  // };
 
   useEffect(() => {
     if (auth.user) {
@@ -98,7 +97,12 @@ const LoginPage = () => {
               <span>Privacy Policy</span> , including <span>Cookie Use.</span>
             </p>
             <h6 className={classes.already}>Already have an account?</h6>
-            <button className={classes.signinBtn} onClick={() => setShowLoginModal(true)} >Sign in</button>
+            <button
+              className={classes.signinBtn}
+              onClick={() => setShowLoginModal(true)}
+            >
+              Sign in
+            </button>
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@ interface AuthContextType {
   signIn: (user: IAuth, type: "login" | "signup") => void;
   isAuthing: boolean;
   authError: any;
+  signOut: () => void;
 }
 
 export const AuthContext = React.createContext<AuthContextType>(null!);

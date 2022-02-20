@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import axios from "axios";
 import { BASE_URL } from "../constants/constants";
 import { AuthContext } from "./AuthContext";
@@ -9,6 +15,7 @@ interface TweetContextType {
   getTweetsErr: any;
   createTweet: (twit: string) => void;
   isCreatingTwit: boolean;
+  setAllTweets: Dispatch<SetStateAction<Record<string, any>[] | null>>;
 }
 
 export const TweetContext = React.createContext<TweetContextType>(null!);
@@ -91,6 +98,7 @@ const TweetProvider = ({ children }: { children: React.ReactNode }) => {
     getTweetsErr,
     createTweet,
     isCreatingTwit,
+    setAllTweets,
   };
 
   return (

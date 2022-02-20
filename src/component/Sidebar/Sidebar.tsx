@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./sidebar.module.css";
 import { RiHome7Fill } from "react-icons/ri";
@@ -8,12 +8,19 @@ import { HiOutlineMail } from "react-icons/hi";
 import { BsBookmark } from "react-icons/bs";
 import { MdOutlineFeaturedPlayList } from "react-icons/md";
 import { IoIosMore } from "react-icons/io";
+// import { TweetContext } from "../../context/TweetContext";
+import { AuthContext } from "../../context/AuthContext";
 
 const navLinks = [
   {
     icon: <RiHome7Fill className={classes.navIcon} />,
     text: "Home",
     link: "",
+  },
+  {
+    icon: <IoPersonOutline className={classes.navIcon} />,
+    text: "My twits",
+    link: "/profile",
   },
   {
     icon: <BiHash className={classes.navIcon} />,
@@ -40,11 +47,7 @@ const navLinks = [
     text: "Lists",
     link: "",
   },
-  {
-    icon: <IoPersonOutline className={classes.navIcon} />,
-    text: "Profile",
-    link: "",
-  },
+
   {
     icon: <IoIosMore className={classes.navIcon} />,
     text: "More",
@@ -57,6 +60,7 @@ interface Prop {
 }
 
 const Sidebar: React.FC<Prop> = ({ setShowModal }) => {
+  const { signOut } = useContext(AuthContext);
   return (
     <div className={classes.root}>
       <svg viewBox="0 0 24 24" aria-hidden="true" className={classes.logo}>
@@ -75,6 +79,11 @@ const Sidebar: React.FC<Prop> = ({ setShowModal }) => {
         </div>
         <button onClick={() => setShowModal(true)} className={classes.tweet}>
           Tweet
+        </button>
+      </div>
+      <div style={{ marginTop: "3rem" }}>
+        <button onClick={() => signOut()} className={classes.tweet}>
+          Log out
         </button>
       </div>
     </div>
