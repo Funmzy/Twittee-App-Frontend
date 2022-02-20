@@ -15,7 +15,6 @@ const TweetModal: React.FC<Prop> = ({ setShowModal }) => {
   const { createTweet, isCreatingTwit } = useContext(TweetContext);
 
   const handleCreateTwit = async () => {
-    console.log(text, "TEXT");
     await createTweet(text);
     setText("");
     setShowModal(false);
@@ -28,7 +27,7 @@ const TweetModal: React.FC<Prop> = ({ setShowModal }) => {
         </div>
         <div className={classes.inputbox}>
           <div className={classes.imgBox}>
-            <p className={classes.imgText}>{user.user.name.charAt(0)}</p>
+            <p className={classes.imgText}>{user.user[0].name.charAt(0)}</p>
           </div>
           <input
             type="text"

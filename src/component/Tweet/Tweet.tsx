@@ -62,7 +62,7 @@ const Tweet: React.FC<Props> = ({
           headers: { Authorization: `Bearer ${user?.token}` },
         };
         const { data } = await axios.get(`${BASE_URL}/like/${id}`, config);
-        console.log(data, "LIKES");
+
         setTweetLike(data.likes.length);
         const isLiked = data.likes.find(
           (like: any) => like.user.id === user.user.id
@@ -84,7 +84,7 @@ const Tweet: React.FC<Props> = ({
     >
       <div className={classes.subRoot}>
         <div className={classes.imgContainer}>
-          <p>{username.charAt(0)}</p>
+          <p>{username && username.charAt(0)}</p>
         </div>
         <div className={classes.content}>
           <div className={classes.contentTop}>

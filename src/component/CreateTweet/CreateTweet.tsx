@@ -5,12 +5,13 @@ import classes from "./createtweet.module.css";
 import { Oval } from "react-loader-spinner";
 
 const CreateTweet = () => {
-  const { user } = useContext(AuthContext);
+const { user } = useContext(AuthContext);
   const [text, setText] = useState("");
   const { createTweet, isCreatingTwit } = useContext(TweetContext);
 
   const handleCreateTwit = () => {
-    console.log(text, "TEXT");
+    if (!text) return;
+
     createTweet(text);
     setText("");
   };
@@ -19,7 +20,7 @@ const CreateTweet = () => {
     <div className={classes.root}>
       <div className={classes.twit}>
         <div className={classes.img_box}>
-          <p className={classes.img_text}>{user.user.name.charAt(0)}</p>
+          <p className={classes.img_text}>{user.user[0].name.charAt(0)}</p>
         </div>
         <div className={classes.inputBox}>
           <input

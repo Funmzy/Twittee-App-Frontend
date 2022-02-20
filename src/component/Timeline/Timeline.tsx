@@ -6,10 +6,13 @@ import Tweet from "../Tweet/Tweet";
 import { useShowModal } from "../../pages/Homepage/Homepage";
 import { TweetContext } from "../../context/TweetContext";
 import { Oval } from "react-loader-spinner";
+import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 const Timeline = () => {
   const { showModal } = useShowModal();
   const { allTweets, isGettingTweets } = useContext(TweetContext);
+  const { signOut } = useContext(AuthContext);
 
   return (
     <div className={classes.root}>
@@ -19,8 +22,27 @@ const Timeline = () => {
           backgroundColor: showModal ? "#242D34" : "#000000",
         }}
       >
-        <h2 className={classes.title}>Home</h2>
-        <AiOutlineDeploymentUnit className={classes.titleIcon} />
+        <div className={classes.headerTop}>
+          <h2 className={classes.title}>Home</h2>
+          <AiOutlineDeploymentUnit className={classes.titleIcon} />
+        </div>
+        <nav className={classes.nav}>
+          <div className={classes.links}>
+            <NavLink className={classes.navLink} to="/">
+              {" "}
+              Home{" "}
+            </NavLink>
+            <NavLink className={classes.navLink} to="/profile">
+              {" "}
+              My Twits{" "}
+            </NavLink>
+          </div>
+          <div>
+            <button className={classes.navBtn} onClick={() => signOut()}>
+              Logout
+            </button>
+          </div>
+        </nav>
       </div>
       <div className={classes.content} style={{ color: "white" }}>
         <CreateTweet />

@@ -3,6 +3,12 @@
   position: fixed;
 }
 
+@media screen and (max-width: 1131px) {
+  .root {
+    padding: 3rem 0 2rem 4rem;
+  }
+}
+
 .logo {
   fill: #fff;
   height: 4rem;

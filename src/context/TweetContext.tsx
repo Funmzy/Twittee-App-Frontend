@@ -39,7 +39,6 @@ const TweetProvider = ({ children }: { children: React.ReactNode }) => {
       try {
         setIsGettingTweets(true);
         const { data } = await axios.get(`${BASE_URL}/twit`, config);
-        console.log(data.twits, "ALL twits");
         setAllTweets(
           data.twits.sort(
             (a: any, b: any) =>
@@ -50,7 +49,6 @@ const TweetProvider = ({ children }: { children: React.ReactNode }) => {
         setIsGettingTweets(false);
       } catch (e: any) {
         setGetTweetsErr(e);
-        console.log(e);
         setIsGettingTweets(false);
       }
     };
@@ -68,23 +66,23 @@ const TweetProvider = ({ children }: { children: React.ReactNode }) => {
 
       const { data } = await axios.post(`${BASE_URL}/twit`, { twit }, config);
 
+
+
       const newTwit = {
         id: data.tweet[0].id,
         twit: data.tweet[0].twit,
         comment: [],
         like: [],
         user: {
-          id: user.user.id,
-          email: user.user.email,
-          name: user.user.name,
+          id: user.user[0].id,
+          email: user.user[0].email,
+          name: user.user[0].name,
         },
       };
 
-      console.log(newTwit, "***");
-      console.log(user, "*&%^^");
 
+      setAllTweets([newTwit, ...allTweets!]);
       if (allTweets) {
-        setAllTweets([newTwit, ...allTweets]);
       }
       setIsCreatingTwit(false);
     } catch (e) {

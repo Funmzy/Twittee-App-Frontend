@@ -34,7 +34,6 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (auth.user) {
-      console.log("User Available");
       navigate("/");
     }
   }, [auth.user, navigate]);

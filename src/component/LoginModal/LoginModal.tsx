@@ -90,9 +90,3 @@ const LoginModal: React.FC<Props> = ({ setShowModal }) => {
 };
 
 export default LoginModal;
-
-// const LoginModal = () => {
-//     return <h1>Login Modal</h1>
-// }
-
-// export default LoginModal

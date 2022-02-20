@@ -26,21 +26,29 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const signIn = async (credentials: IAuth, type: "login" | "signup") => {
     try {
-      console.log(credentials);
       setIsAuthing(true); // type: "login" | "signup"
+
       const url =
         type === "login"
           ? `${BASE_URL}/users/login`
           : `${BASE_URL}/users/signup`;
+
       const { data } = await axios.post(url, credentials);
+
       setIsAuthing(false);
-      console.log(data.data);
+      console.log(data, "DATA");
+
+      data.data.token = data.token;
+
+      // if (type === "login") {
+      //   const user = [data.user];
+      //   data.data.user = user;
+      // }
 
       localStorage.setItem("twiteeUser", JSON.stringify(data.data));
 
       setUser(data.data);
     } catch (e: any) {
-      console.log(e.response.data);
       setUser(null);
       setAuthError(e);
       setIsAuthing(false);
@@ -50,6 +58,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const signOut = () => {
     setUser(null);
+    localStorage.removeItem("twiteeUser");
   };
 
   const value = { user, signIn, signOut, isAuthing, authError };

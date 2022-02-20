@@ -23,7 +23,7 @@ const TweetDetail = () => {
 
   const [text, setText] = useState("");
 
-  console.log(user.user.id, "USER");
+  console.log(user.user[0].id, "USER");
 
   const reply = async () => {
     if (!text) return;
@@ -47,18 +47,13 @@ const TweetDetail = () => {
 
       const userComment = {
         id: user.user.id,
-        name: user.user.name,
+        name: user.user[0].name,
         email: user.user.email,
         created_at: user.user.created_at,
       };
       data.comment[0].user = userComment;
 
       parsedTweet.comments.unshift(data.comment[0]);
-
-      // console.log(userComment, "userComment");
-      // console.log(data.comment[0]);
-      // console.log(parsedTweet, "NEW");
-      // console.log(tweet, "OLD");
 
       setTweet(parsedTweet);
 
@@ -88,9 +83,17 @@ const TweetDetail = () => {
     try {
       setIsDeletingTwit(true);
 
+      console.log(id)
+      console.log(user.user[0].id)
+
       const { data } = await axios.delete(`${BASE_URL}/twit/${id}`, config);
 
       console.log(data);
+      const newTwits = allTweets?.filter((t) => t.id !== +id!);
+
+      setAllTweets(newTwits!);
+
+      navigate(-1);
       setIsDeletingTwit(false);
     } catch (e) {
       setIsDeletingTwit(false);
@@ -110,6 +113,7 @@ const TweetDetail = () => {
         const { data } = await axios.get(`${BASE_URL}/twit/${id}`, config);
 
         setTweet(data.twits);
+        console.log(data.twits, "***");
         setText("");
 
         setIsGetting(false);
@@ -141,7 +145,7 @@ const TweetDetail = () => {
           </div>
         ) : (
           tweet &&
-          tweet.twits.user.id === user.user.id && (
+          tweet.twits.user.id === user.user[0].id && (
             <AiOutlineDelete
               onClick={deleteTwit}
               className={classes.twitIcon}
@@ -181,7 +185,7 @@ const TweetDetail = () => {
           />
           <div className={classes.reply}>
             <div className={classes.imgBox}>
-              <p>{user.user.name.charAt(0)}</p>
+              <p>{user.user[0].name.charAt(0)}</p>
             </div>
             <div className={classes.content}>
               <p className={classes.replyName}>
