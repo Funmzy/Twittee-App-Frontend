@@ -75,7 +75,7 @@ const Tweet: React.FC<Props> = ({
 
         setTweetLike(data.likes.length);
 
-        console.log("&&&USER", user);
+       
 
         const isLiked = data.likes.find(
           (like: any) => like.user.id === user.user[0].id
@@ -88,7 +88,7 @@ const Tweet: React.FC<Props> = ({
     };
 
     fetchLikes();
-  }, [id, user?.token, user.user.id]);
+  }, [id, user, user?.token, user.user.id]);
 
   return (
     <div
