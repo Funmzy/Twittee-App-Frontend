@@ -83,8 +83,8 @@ const TweetDetail = () => {
     try {
       setIsDeletingTwit(true);
 
-      console.log(id)
-      console.log(user.user[0].id)
+      console.log(id);
+      console.log(user.user[0].id);
 
       const { data } = await axios.delete(`${BASE_URL}/twit/${id}`, config);
 
@@ -229,6 +229,7 @@ const TweetDetail = () => {
               text={twt.comment}
               username={twt.user.name}
               key={twt.id}
+              author={`@${tweet.twits.user.name}`}
             />
           ))}
         </>

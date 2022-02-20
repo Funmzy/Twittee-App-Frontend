@@ -16,6 +16,7 @@ interface Props {
   comments?: number;
   createdAt: Date;
   id: number;
+  author?: string;
 }
 
 const Tweet: React.FC<Props> = ({
@@ -26,11 +27,13 @@ const Tweet: React.FC<Props> = ({
   username,
   createdAt,
   id,
+  author,
 }) => {
   const navigate = useNavigate();
 
   const [tweetLike, setTweetLike] = useState(likes);
   const [hasBeenLiked, setHasBeenLiked] = useState(false);
+  const [isLiking, setIsLiking] = useState(false);
   // const [isGettingLikes, setIsGettingLikes] = useState(false);
   const { user } = useContext(AuthContext);
 
@@ -38,13 +41,17 @@ const Tweet: React.FC<Props> = ({
     e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>
   ) => {
     e.stopPropagation();
+    if (isLiking) return;
     const config = {
       headers: { Authorization: `Bearer ${user?.token}` },
     };
 
     try {
+      setIsLiking(true);
       if (hasBeenLiked) {
-        setTweetLike(tweetLike! - 1);
+        if (tweetLike! >= 0) {
+          setTweetLike(tweetLike! - 1);
+        }
         await axios.delete(`${BASE_URL}/like/${id}`, config);
         setHasBeenLiked(false);
       } else {
@@ -52,7 +59,10 @@ const Tweet: React.FC<Props> = ({
         await axios.post(`${BASE_URL}/like/${id}`, {}, config);
         setHasBeenLiked(true);
       }
-    } catch (e) {}
+      setIsLiking(false);
+    } catch (e) {
+      setIsLiking(false);
+    }
   };
 
   useEffect(() => {
@@ -64,8 +74,11 @@ const Tweet: React.FC<Props> = ({
         const { data } = await axios.get(`${BASE_URL}/like/${id}`, config);
 
         setTweetLike(data.likes.length);
+
+        console.log("&&&USER", user);
+
         const isLiked = data.likes.find(
-          (like: any) => like.user.id === user.user.id
+          (like: any) => like.user.id === user.user[0].id
         );
 
         if (isLiked) {
@@ -90,12 +103,17 @@ const Tweet: React.FC<Props> = ({
           <div className={classes.contentTop}>
             <h6 className={classes.username}>{username}</h6>
             <span className={classes.hrs}>
-              <TimeAgo datetime={createdAt} locale="en_US" />
+              <TimeAgo
+                datetime={createdAt}
+                locale="en_US"
+                live={false}
+                opts={{ minInterval: 300 }}
+              />
             </span>
           </div>
           {type === "reply" && (
             <p className={classes.replyName}>
-              Replying <span className={classes.replySpan}>@olujay</span>
+              Replied <span className={classes.replySpan}>{author}</span>
             </p>
           )}
           <p className={classes.tweet}>{text}</p>
