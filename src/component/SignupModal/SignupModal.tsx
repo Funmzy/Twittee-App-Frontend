@@ -79,7 +79,7 @@ const SignupModal: React.FC<Props> = ({ setShowModal }) => {
                 secondaryColor="#3498eb"
               />
             ) : (
-              "Login"
+              "Signup"
             )}
           </button>
         </form>

@@ -89,7 +89,7 @@ const LoginPage = () => {
               className={classes.btn_email}
               onClick={() => setShowSignupModal(true)}
             >
-              Sign up with a phone number or ema...
+              Sign up with email.
             </button>
             <p className={classes.policy}>
               By signing up, you agree to the <span>Terms of Service</span> and{" "}
